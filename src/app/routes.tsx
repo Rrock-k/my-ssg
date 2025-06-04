@@ -1,14 +1,14 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import HomePage from "../pages/index";
-import AboutPage from "../pages/about";
-import ContactPage from "../pages/contact";
-import Layout from "../components/Layout";
-import TodoPage from "../pages/todo";
-import ThemePage from "../pages/theme";
+import { Routes, Route } from "react-router-dom"
+import HomePage from "../pages/index"
+import AboutPage from "../pages/about"
+import ContactPage from "../pages/contact"
+import Layout from "../components/Layout"
+import TodoPage from "../pages/todo"
+import ThemePage from "../pages/theme"
 
 export default function AppRoutes() {
   return (
+    <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/about.html" element={<AboutPage />} />
@@ -17,5 +17,5 @@ export default function AppRoutes() {
         <Route path="/theme.html" element={<ThemePage />} />
       </Route>
     </Routes>
-  );
+  )
 }
