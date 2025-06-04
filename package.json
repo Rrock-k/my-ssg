@@ -1,0 +1,24 @@
+{
+  "name": "my-ssg",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build:ts": "esbuild src/build.tsx --bundle --platform=node --target=es2020 --outdir=dist-es",
+    "ssg": "node --loader ts-node/esm --experimental-specifier-resolution=node src/build.tsx",
+    "copy:assets": "cp -R public/* dist/",
+    "build:client": "esbuild src/client/index.tsx --bundle --format=esm --target=es2018 --outfile=dist/assets/client.js",
+    "build": "npm run ssg && npm run build:client",
+    "dev": "nodemon --watch src --ext ts,tsx --exec \"npm run build\""
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "esbuild": "^0.18.20",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.9.5"
+  }
+}
