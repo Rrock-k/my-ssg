@@ -1,4 +1,4 @@
-import { writeFileSync, mkdirSync, existsSync, readdirSync } from "fs";
+import { writeFileSync, mkdirSync, rmSync, readdirSync } from "fs";
 import { resolve, join, basename, extname } from "path";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -8,7 +8,8 @@ import AppRoutes from "./app/routes.js";
 async function build() {
   const projectRoot = process.cwd();
   const distDir = resolve(projectRoot, "dist");
-  if (!existsSync(distDir)) mkdirSync(distDir);
+  rmSync(distDir, { recursive: true, force: true });
+  mkdirSync(distDir, { recursive: true });
 
   const pagesDir = resolve(projectRoot, "src/pages");
   const pageFiles = readdirSync(pagesDir).filter(f => f.endsWith(".tsx"));
