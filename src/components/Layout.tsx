@@ -21,7 +21,7 @@ export default function Layout() {
       <body>
         <header>
           <nav>
-            <Link to="/">Home</Link> | <Link to="/about.html">About</Link> | <Link to="/contact.html">Contact</Link>
+            <Link to="/">Home</Link> | <Link to="/about.html">About</Link> | <Link to="/contact.html">Contact</Link> | <Link to="/todo.html">Todo</Link> | <Link to="/theme.html">Theme</Link>
           </nav>
         </header>
         <main id="root">
