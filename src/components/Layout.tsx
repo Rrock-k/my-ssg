@@ -17,7 +17,11 @@ export default function Layout({ title, children }: Props) {
       <body>
         <header>
           <nav>
-            <a href="/">Home</a> | <a href="/about.html">About</a> | <a href="/contact.html">Contact</a>
+            <a href="/">Home</a> |
+            <a href="/about.html">About</a> |
+            <a href="/contact.html">Contact</a> |
+            <a href="/todo.html">Todo</a> |
+            <a href="/theme.html">Theme</a>
           </nav>
         </header>
         <main id="root">{children}</main>
