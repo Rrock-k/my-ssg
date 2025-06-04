@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 type Props = {
   title: string;
@@ -17,7 +18,7 @@ export default function Layout({ title, children }: Props) {
       <body>
         <header>
           <nav>
-            <a href="/">Home</a> | <a href="/about.html">About</a> | <a href="/contact.html">Contact</a>
+            <Link to="/">Home</Link> | <Link to="/about.html">About</Link> | <Link to="/contact.html">Contact</Link>
           </nav>
         </header>
         <main id="root">{children}</main>
