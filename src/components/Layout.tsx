@@ -1,12 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
-type Props = {
-  title: string;
-  children: React.ReactNode;
+const titles: Record<string, string> = {
+  "/": "Главная",
+  "/about.html": "О нас",
+  "/contact.html": "Контакты",
 };
 
-export default function Layout({ title, children }: Props) {
+export default function Layout() {
+  const location = useLocation();
+  const title = titles[location.pathname] ?? "MySSG";
   return (
     <html>
       <head>
@@ -21,7 +24,9 @@ export default function Layout({ title, children }: Props) {
             <Link to="/">Home</Link> | <Link to="/about.html">About</Link> | <Link to="/contact.html">Contact</Link>
           </nav>
         </header>
-        <main id="root">{children}</main>
+        <main id="root">
+          <Outlet />
+        </main>
         <footer>
           <p>© MySSG 2025</p>
         </footer>
