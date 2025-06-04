@@ -17,10 +17,10 @@ export default function Layout({ title, children }: Props) {
       <body>
         <header>
           <nav>
-            <a href="/">Home</a> | <a href="/about.html">About</a>
+            <a href="/">Home</a> | <a href="/about.html">About</a> | <a href="/contact.html">Contact</a>
           </nav>
         </header>
-        <main>{children}</main>
+        <main id="root">{children}</main>
         <footer>
           <p>© MySSG 2025</p>
         </footer>
