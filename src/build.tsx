@@ -1,5 +1,6 @@
 import { writeFileSync, mkdirSync, rmSync, readdirSync } from "fs";
 import { resolve, join, basename, extname } from "path";
+import { pathToFileURL } from "url";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
@@ -17,9 +18,15 @@ async function build() {
   for (const file of pageFiles) {
     const name = basename(file, extname(file));
     const path = name === "index" ? "/" : `/${name}.html`;
+    const mod = await import(pathToFileURL(join(pagesDir, file)).href);
+    let props: any = {};
+    if (typeof mod.getStaticProps === "function") {
+      const result = await mod.getStaticProps();
+      props = result?.props ?? result ?? {};
+    }
     const html = renderToStaticMarkup(
       <StaticRouter location={path}>
-        <AppRoutes />
+        <AppRoutes pageProps={{ [path]: props }} />
       </StaticRouter>
     );
     const outFile = join(distDir, name === "index" ? "index.html" : `${name}.html`);
